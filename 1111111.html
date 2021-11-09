@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	
+		<meta charset="utf-8">
+		<title>How many days have you lived?</title>
+		
+		<style>
+			div{
+				font-size:1rem;
+				color:#ff0000;              /* цвет букв */
+				text-align:center;
+			}
+			input{
+				border: 1px solid rgb(81, 255, 0);     /* цвет границ */
+			}
+			
+		</style>
+	</head>
+	<body onload="getDays()">
+		<div><h3>Enter a birthday</h3></div>
+		<div>
+			<p>
+			  <input size="8" id="y1" >Year 
+		    <input size="4" id="m1" >Month 
+		    <input size="4" id="d1" >Birth		
+			</p>
+		  <p>
+		    <input  size="8" id="y2" >Year 
+		    <input  size="4" id="m2" >Month 
+		    <input  size="4" id="d2" >Date 
+		  </p>
+			<p>
+		<input type="button" value="How many days have been calculated?" onclick="calDays()">
+	</p>
+
+		 <span style="color:rgb(255, 0, 0);" id="result2"></span>
+	
+		</div>
+		<script> 
+
+
+			/* getElementById  это у нас возвращает ссылку на элемент оператору (ID) */
+
+
+		function getDays(){
+				var	today = new Date();
+			  document.getElementById("y2").value=today.getFullYear();
+				document.getElementById("m2").value=today.getMonth()+1;   /* добавляет +1 месяц так как я не смог пофиксить проблему */
+				document.getElementById("d2").value=today.getDate();
+			}
+
+		function calDays(){
+		year1=document.getElementById("y1").value;
+		month1=document.getElementById("m1").value;
+		date1=document.getElementById("d1").value-1;        /*отнимает один день так как не могу пофиксить*/
+		year2=document.getElementById("y2").value;
+
+		if(year1==""||month1==""||date1=="")
+
+		alert(" Value can't be empty ");                         /* выдает ошибку тогда когда ячейки пусты */
+
+		if (isNaN(year1)||isNaN(month1)||isNaN(date1))
+
+		alert(" please enter again! ");                           /* выдает ошибку когда в ячейке есть буква */
+
+		month2=document.getElementById("m2").value;                 
+		date2=document.getElementById("d2").value;
+		day1 = new Date(year1,month1-1,date1); // Подсчет количества миллисекунд
+		day2 = new Date(year2,month2-1,date2); // Считает сегоднешние милисекунды
+		document.getElementById("result2").innerHTML=Math.floor((day2-day1)/86400000);
+		// 1 день имеет 24 * 60 * 60 * 1000 = 86400000 мс
+	  	}
+		</script>
+	</body>
+
+
+
+
+	<br>
+
+
+
+
+
+	<script>
+		 howDay("4/14/2003");
+		function howDay(date){
+      var date1 = new Date(date);
+      var date2 = new Date();
+      var i = date2.getTime() - date1.getTime();
+      var d =  Math.round(i / (1000*3600*24));          /*округляет число до юлижайщего целого*/   /*жуыктайд*/
+      document.write("Days:" +d,"<br>");
+    }
+	</script>
+</html>

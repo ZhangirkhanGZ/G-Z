@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<title>Assigment2</title>
+</head>
+<body>
+	
+	<input id="num1">
+
+
+	<div id="operator_btns">
+	  <button id="plus" onclick="o = '+' ">+</button>
+	  <button id="times" onclick="o = '*' ">*</button>
+	  <button id="minus" onclick="o = '-' ">-</button>  <!--блок с кнопками-->
+	  <button id="divide" onclick="o = '/' ">/</button>
+    <button id="procent" onclick="o = '%' ">%</button>
+	</div>
+
+	<input id="num2" >
+	<br>
+
+	<button onclick="func()">calculate</button>
+
+	<p id="result"></p>
+
+	
+	<script>
+	  // переменная, в которой хранится выбранное математическое действие
+	  var o; 
+
+	  // функция расчёта
+	  function func() {
+	  	
+	    var result;    // переменная для результата
+	    
+	    var num1 = Number(document.getElementById("num1").value);   // получаем первое и второе число
+	    var num2 = Number(document.getElementById("num2").value);
+	   
+	    switch (o) {
+	      case '+':
+	        result = num1 + num2;
+	        break;
+	      case '-':	
+	        result = num1 - num2;              // смотрим, что было в переменной с действием, и действуем исходя из этого
+	        break;
+	      case '*':
+	        result = num1 * num2;
+	        break;
+	      case '/':
+	        result = num1 / num2;
+          break;
+        case '%':
+          result = num1 % num2;	
+	        break;
+	    }
+
+	   
+	    document.getElementById("result").innerHTML = result;    // отправляем результат на страницу
+	  }
+	</script>
+
+</body>
+</html>
